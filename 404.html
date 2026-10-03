@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주소가 바뀌었습니다 · AIC 공장 시뮬레이터</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://endfield-aic-sim.github.io/">
+<script>
+// AIC 공장 시뮬레이터 moved to https://endfield-aic-sim.github.io/
+// Keeps the page (preview.html) and the #post/123-style address, and hands over what this browser saved on the old address.
+(function () {
+  var base = 'https://endfield-aic-sim.github.io/';
+  var path = location.pathname.replace(/^\/endfield_AIC_simulation\/?/i, '');
+  if (!/^(preview\.html)?$/.test(path)) path = '';
+  var hash = location.hash || '';
+  var url = base + path + hash;
+  try {
+    var bps = JSON.parse(localStorage.getItem('aic-bp-v2') || 'null');
+    var layout = JSON.parse(localStorage.getItem('aic-sim-v2') || 'null');
+    if ((bps && bps.length) || (layout && layout.world)) {
+      var s = btoa(unescape(encodeURIComponent(JSON.stringify({ bps: bps || [], layout: layout, hash: hash }))))
+        .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      if (s.length < 1500000) url = base + path + '#migrate=' + s;
+    }
+  } catch (e) { /* storage blocked: just move */ }
+  location.replace(url);
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=https://endfield-aic-sim.github.io/"></noscript>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; box-sizing: border-box;
+         background: #101312; color: #E5E8E3; font-family: "IBM Plex Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+  main { max-width: 440px; }
+  h1 { font-size: 20px; margin: 0 0 8px; }
+  p { margin: 0; line-height: 1.6; color: #8D9690; }
+  a { color: #F2D300; }
+</style>
+</head>
+<body>
+<main>
+  <h1>주소가 바뀌었습니다</h1>
+  <p>AIC 공장 시뮬레이터는 이제 <a href="https://endfield-aic-sim.github.io/">endfield-aic-sim.github.io</a>에서 열립니다. 자동으로 이동하지 않으면 링크를 눌러 주세요.</p>
+</main>
+</body>
+</html>
